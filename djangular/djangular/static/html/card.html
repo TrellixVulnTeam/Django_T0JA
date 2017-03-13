@@ -1,15 +1,22 @@
 <div class="card" ng-hide="edit" ng-click="edit=true">
     <h4>{{ card.title }}</h4>
-    <span class="description">{{ card.description }}</span>
+    <p><span class="description">Description: {{ card.description }}</span></p>
+    <p><span class="description">Story Points: {{ card.story_points }}</span></p>
+    <p><span class="description">Business Values: {{ card.business_value }}</span></p>
+
+
 </div>
 
 <div class="card" ng-show="edit" ng-model-options="modelOptions" >
     <div class="flex">
         <label><strong>Title: &nbsp;</strong></label>
-        <input type="text" ng-model="card.title" ng-change="update()" />    <!--This causes an http request on each change and thus lot of traffic issues. Therefore
+        <input type="text" ng-model="card.title" ng-change="update()" />  <!--This causes an http request on each change and thus lot of traffic issues. Therefore
         we introduces new model in card.directive.js -->
+
     </div>
     <textarea ng-model="card.description" ng-change="update()" placeholder="Enter description.."></textarea>
+    <p>Story points: <input type="text" ng-model="card.story_points" ng-change="update()" placeholder="Enter Story points"></p>
+    <p>Business Value: <input type="text" ng-model="card.business_value" ng-change="update()" placeholder="Enter Story points"></p>
     <button ng-click="edit=false">Close </button>
     <button ng-click="delete()">Delete Card</button>
 </div>

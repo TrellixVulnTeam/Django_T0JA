@@ -1,6 +1,6 @@
 (function(){
                 'use strict';
-                angular.module('scrumboard.demo', [])   //we are creating a module, that's y an extra parameter
+                angular.module('scrumboard.demo', ['ngRoute'])   //we are creating a module, that's y an extra parameter
                     .controller('ScrumboardController', [ '$scope', '$http',ScrumboardController]); //DEPENDENCIES - https and function
 
                 function ScrumboardController($scope, $http){
@@ -17,10 +17,13 @@
                             });
                         };
 
-                        $scope.login = function(){
-                            $http.post('/auth_api/login/',
-                                {username: 'reindert', password:'trednier'});
-                        };
+                        $scope.logout = function () {
+                            $http.get('/scrumboard/lists/').then(
+                                function (response) {
+                                    $scope.data = response.data;
+                                }
+                            );
+                        }
 
                         $scope.data = [];                                   //fill it with data from the database
                         $http.get('/scrumboard/lists').then(function(response){     //this is an asynchronous call, doesn't wait for data to return from the server
