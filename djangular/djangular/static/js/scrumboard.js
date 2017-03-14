@@ -29,6 +29,10 @@
                         $http.get('/scrumboard/lists').then(function(response){     //this is an asynchronous call, doesn't wait for data to return from the server
                             $scope.data = response.data;                    //it automatically takes a return in a promise form
                         });
+
+                        $scope.sortBy = 'story_points';
+                        $scope.reverse=true;
+                        $scope.showFilters=false;
                 }
 
             }());

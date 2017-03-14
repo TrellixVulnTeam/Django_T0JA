@@ -15,6 +15,11 @@
 
     </div>
     <textarea ng-model="card.description" ng-change="update()" placeholder="Enter description.."></textarea>
+    <div>
+        <label>List: </label>
+        <select ng-options="list as list.name for list in data" ng-model="destList"></select>
+        <button ng-click="move()">Move</button>
+    </div>
     <p>Story points: <input type="text" ng-model="card.story_points" ng-change="update()" placeholder="Enter Story points"></p>
     <p>Business Value: <input type="text" ng-model="card.business_value" ng-change="update()" placeholder="Enter Story points"></p>
     <button ng-click="edit=false">Close </button>
